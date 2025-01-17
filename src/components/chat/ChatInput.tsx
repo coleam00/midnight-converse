@@ -27,7 +27,7 @@ export const ChatInput = ({ onSend, disabled }: ChatInputProps) => {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Type a message..."
-          className="min-h-[60px]"
+          className="min-h-[60px] text-black dark:text-white bg-white dark:bg-gray-800"
           disabled={disabled}
         />
         <Button type="submit" disabled={disabled || !message.trim()}>
