@@ -114,10 +114,10 @@ export const ConversationSidebar = ({
           </div>
         </ScrollArea>
       )}
-      <div className="p-4 border-t border-gray-700">
+      <div className={cn("p-4 border-t border-gray-700", isCollapsed && "flex items-center justify-center")}>
         <Button
           variant="ghost"
-          className="w-full justify-start gap-2 text-red-400 hover:text-red-300 hover:bg-red-900/10"
+          className={cn("w-full justify-start gap-2 text-red-400 hover:text-red-300 hover:bg-red-900/10", isCollapsed && "justify-center")}
           onClick={handleLogout}
         >
           <LogOut className="h-4 w-4" />

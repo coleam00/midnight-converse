@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "./lib/supabase";
 import Index from "./pages/Index";
 import Chat from "./pages/Chat";
+import { ThemeProvider } from "./components/ui/theme-provider";
 
 const queryClient = new QueryClient();
 
@@ -37,21 +38,23 @@ const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route
-            path="/chat"
-            element={
-              <PrivateRoute>
-                <Chat />
-              </PrivateRoute>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
+      <ThemeProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route
+              path="/chat"
+              element={
+                <PrivateRoute>
+                  <Chat />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

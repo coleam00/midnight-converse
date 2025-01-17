@@ -6,6 +6,7 @@ import { ConversationSidebar } from '@/components/chat/ConversationSidebar';
 import { supabase } from '@/lib/supabase';
 import { useToast } from '@/hooks/use-toast';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 interface Message {
   content: string;
@@ -108,13 +109,17 @@ const Chat = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-900 text-gray-100">
+    <div className="flex h-screen bg-gray-900 text-gray-100 dark:bg-gray-800 dark:text-gray-200">
       <ConversationSidebar
         currentSessionId={sessionId}
         onSessionSelect={setSessionId}
         onNewChat={handleNewChat}
       />
       <div className="flex-1 flex flex-col">
+        <div className="flex justify-between items-center p-4 border-b border-gray-700">
+          <h1 className="text-xl font-bold">Pydantic GitHub Agent</h1>
+          <ThemeToggle />
+        </div>
         <ScrollArea className="flex-1">
           <div className="min-h-full">
             {messages.map((message, i) => (

@@ -20,6 +20,13 @@ export const ChatInput = ({ onSend, disabled }: ChatInputProps) => {
     setMessage('');
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit} className="p-4 border-t border-gray-700">
       <div className="max-w-3xl mx-auto flex gap-2">
@@ -29,6 +36,7 @@ export const ChatInput = ({ onSend, disabled }: ChatInputProps) => {
           placeholder="Type a message..."
           className="min-h-[60px] text-black dark:text-white bg-white dark:bg-gray-800"
           disabled={disabled}
+          onKeyDown={handleKeyDown}
         />
         <Button type="submit" disabled={disabled || !message.trim()}>
           Send

@@ -11,17 +11,24 @@ export const ChatMessage = ({ content, type }: ChatMessageProps) => {
     <div
       className={cn(
         "px-4 py-6 w-full",
-        type === 'human' ? 'bg-chat-human' : 'bg-chat-ai'
+        type === 'human' ? 'flex justify-end' : 'flex justify-start'
       )}
     >
-      <div className="max-w-3xl mx-auto">
-        {type === 'human' ? (
-          <p className="text-gray-100">{content}</p>
-        ) : (
-          <ReactMarkdown className="prose prose-invert">
-            {content}
-          </ReactMarkdown>
+      <div
+        className={cn(
+          "max-w-3xl",
+          type === 'human' ? 'bg-chat-human text-white rounded-tl-lg rounded-tr-lg rounded-bl-lg' : 'bg-chat-ai rounded-tr-lg rounded-bl-lg rounded-br-lg'
         )}
+      >
+        <div className="p-3">
+          {type === 'human' ? (
+            <p className="text-gray-100">{content}</p>
+          ) : (
+            <ReactMarkdown className="prose prose-invert">
+              {content}
+            </ReactMarkdown>
+          )}
+        </div>
       </div>
     </div>
   );
